@@ -12,5 +12,5 @@ Programs:
 
 1. Factorial
 2. Sum of N Natural Numbers
-3. Taylor Series
+3. Taylor Series (Horner's Rule)
 4. Tree Recursion
