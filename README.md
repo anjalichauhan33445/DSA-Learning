@@ -23,7 +23,8 @@ This repository contains my implementations of Data Structures and Algorithms co
 
 Completed:
 - Factorial using Recursion
-- Taylor Series
+- Taylor Series (Horner's rule)
+- Fibonacci Series (Excessive and Memoization)
 - Tree Recursion
 - Nested Recursion
 - Indirect Recursion
