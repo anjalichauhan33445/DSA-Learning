@@ -26,6 +26,7 @@ Completed:
 - Taylor Series (Horner's rule)
 - Fibonacci Series (Excessive and Memoization)
 - nCr Calculation (Pascal's Triangle)
+- Tower of Hanoi
 - Tree Recursion
 - Nested Recursion
 - Indirect Recursion

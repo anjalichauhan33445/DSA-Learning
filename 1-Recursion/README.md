@@ -9,6 +9,7 @@ Concepts Covered:
 - Nested Recursion
 - Horner's Rule
 - Pascal's Triangle
+- Tower of Hanoi
 
 Programs:
 
@@ -19,3 +20,4 @@ Programs:
 5. Exponent using Recursion
 6. Fibonacci Series(Excessive and Memoization)
 7. nCr Calculation (Pascal's Triangle)
+8. Tower of Hanoi

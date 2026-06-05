@@ -20,7 +20,7 @@ long long NCR(int n, int r){
     }
 }
 int main(){
-    printf("\nPossible Selections: %lld\n", ncr(5,2));
-    printf("Using Recursion:\nPossible Selections: %lld\n", NCR(5,2));
+    printf("\nPossible Selections: %lld\n", ncr(5,1));
+    printf("Using Recursion:\nPossible Selections: %lld\n", NCR(5,1));
     return 0;
 }
