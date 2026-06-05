@@ -25,6 +25,7 @@ Completed:
 - Factorial using Recursion
 - Taylor Series (Horner's rule)
 - Fibonacci Series (Excessive and Memoization)
+- nCr Calculation (Pascal's Triangle)
 - Tree Recursion
 - Nested Recursion
 - Indirect Recursion

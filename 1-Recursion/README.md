@@ -7,6 +7,8 @@ Concepts Covered:
 - Tree Recursion
 - Indirect Recursion
 - Nested Recursion
+- Horner's Rule
+- Pascal's Triangle
 
 Programs:
 
@@ -16,3 +18,4 @@ Programs:
 4. Tree Recursion
 5. Exponent using Recursion
 6. Fibonacci Series(Excessive and Memoization)
+7. nCr Calculation (Pascal's Triangle)
