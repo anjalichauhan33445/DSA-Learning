@@ -1,10 +1,11 @@
 # DSA Learning Journey
 
-This repository contains my implementations of Data Structures and Algorithms concepts while following Abdul Bari's DSA course.
+This repository contains my implementations of Data Structures and Algorithms concepts.
 
 ## Topics Covered
 
 - [x] Recursion
+- [x] Array Representations
 - [ ] Arrays
 - [ ] Strings
 - [ ] Matrices
