@@ -18,17 +18,20 @@ void Display(struct Array arr){
 }
 
 int Delete(struct Array *arr, int index){
-    int x = arr->A[index];
+    int x = 0;
     if(index>=0 && index < arr->length){
+         x = arr->A[index];
         for(int i = index ; i<arr->length-1; i++){
             arr->A[i] = arr->A[i+1]; 
         }
         arr->length--;
+        return x;
+       
     }
     else{
         cout<< "Sorry, Deletion couldn't be performed!\n";
     }
-    return x;
+    return 0;
 }
 
 
