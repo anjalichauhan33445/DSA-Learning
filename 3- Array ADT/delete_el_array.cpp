@@ -17,7 +17,8 @@ void Display(struct Array arr){
     }
 }
 
-void Delete(struct Array *arr, int index){
+int Delete(struct Array *arr, int index){
+    int x = arr->A[index];
     if(index>=0 && index < arr->length){
         for(int i = index ; i<arr->length-1; i++){
             arr->A[i] = arr->A[i+1]; 
@@ -27,6 +28,7 @@ void Delete(struct Array *arr, int index){
     else{
         cout<< "Sorry, Deletion couldn't be performed!\n";
     }
+    return x;
 }
 
 
@@ -35,7 +37,7 @@ int main(){
     
 
     Display(arr);
-    Delete(&arr,3);
+    cout<<"The element deleted is : "<<Delete(&arr,4)<< "\n";
     
     Display(arr);
 
