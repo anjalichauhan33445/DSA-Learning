@@ -5,13 +5,13 @@ using namespace std;
 
 void pattern7(int n){
     for(int i = 0; i<n;i++){
-        for(int j = n-1-i; j>0;j--){
+        for(int j = n-i-1; j>0;j--){
             cout<<" ";
         }
         for(int k = 0; k<2*i+1; k++){
             cout<<"*";
         }
-        for(int l = n-1-i; l>=0; l--){
+        for(int l = n-i-1; l>=0; l--){
             cout<<" ";
         }
         cout<<endl;
@@ -35,7 +35,7 @@ void pattern8(int n){
 
 void pattern9(int n){
     for(int i = 0; i<n ;i++){
-        for(int j = n-1-i; j>0;j--){
+        for(int j = n-i-1; j>0;j--){
             cout<<" ";
         }
         for(int k = 0; k<2*i+1; k++){
@@ -86,6 +86,95 @@ void pattern11(int n){
     }
 }
 
+void pattern12(int n){
+    int spaces = 2*(n-1);
+    for(int i = 1; i<=n; i++){
+        for(int j = 1; j<=i; j++){
+            cout<<j;
+        }
+
+        for(int k = 1; k<=spaces; k++){
+            cout<<" ";
+        }
+
+        for(int l = i; l>=1 ; l--){
+            cout<<l;
+        }
+        cout<<endl;
+        spaces-=2;
+    }
+}
+
+void pattern13(int n){
+    int num = 0;
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<=i; j++){
+            num++;
+            cout<<num<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+void pattern14(int n){
+    
+    for(int i = 0; i<n; i++){
+       char ch = 'A';
+        for(int j = 0; j<=i; j++){
+            cout<<char(ch)<<" ";
+            ch++;
+        }
+        cout<<endl;
+    }
+}
+
+void pattern15(int n){
+    
+    for(int i = 0; i<n; i++){
+        char ch = 'A';
+        for(int j = i; j<n; j++){
+            cout<<char(ch)<<" ";
+            ch++;
+        }
+        cout<<endl;
+    }
+}
+
+
+void pattern16(int n){
+    char ch = 'A';
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<=i; j++){
+            cout<<ch<<" ";
+        }
+        cout<<endl;
+        ch++;
+    }
+}
+
+
+void pattern17(int n){
+    for(int i = 0; i<n;i++){
+        for(int j = n-i-1; j>0;j--){
+            cout<<" ";
+        }
+
+        char ch = 'A';
+        int breakpoint = (2*i+1)/2;
+        for(int k = 0; k<2*i+1; k++){
+            cout<<ch;
+            if(k<breakpoint )ch++;
+            else ch--;
+
+            
+        }
+        for(int l = n-i-1; l>=0; l--){
+            cout<<" ";
+        }
+        cout<<endl;
+    }
+}
+
 int main(){
     // pattern7(5);
    
@@ -96,6 +185,9 @@ int main(){
     // pattern10(5);
     
     //pattern11(5);
+    //pattern13(5);
+    //pattern16(5);
+    //pattern17(4);
 
 
 }
