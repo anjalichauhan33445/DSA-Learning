@@ -1,7 +1,5 @@
-#include<iostream>
 #include<stdio.h>
-
-using namespace std;
+#include<stdlib.h>
 
 struct Array{
 int A[20];
@@ -11,14 +9,14 @@ int length;
 
 // Display function
 void Display(struct Array arr){
-    cout<< "Elements in the array are:\n";
-    for(int i = 0; i<arr.length; i++){ 
-        cout<<arr.A[i]<<"\n";
+    printf("Elements in the array are:\n");
+    for(int i = 0; i<arr.length; i++){
+        printf("%d\n", arr.A[i]);
     }
 }
 
 struct Array *Merge(struct Array *arr1, struct Array *arr2){
-   Array *arr3 = new Array();
+   struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
 
    int i,j,k;
    i = j = k = 0;
@@ -40,22 +38,19 @@ struct Array *Merge(struct Array *arr1, struct Array *arr2){
     arr3->A[k++] = arr2->A[j];
    }
 
-arr3->length = arr1->length + arr2->length;
-arr3->size = 20;
-return arr3;
-
+   arr3->length = arr1->length + arr2->length;
+   arr3->size = 20;
+   return arr3;
 }
 
 int main(){
-    Array arr1 = {{10,20,30,40,50},10,5};
-    Array arr2 = {{60,70,80,90,100},10,5};
-    Array *arr3 = Merge(&arr1, &arr2);
+    struct Array arr1 = {{10,20,30,40,50},10,5};
+    struct Array arr2 = {{60,70,80,90,100},10,5};
+    struct Array *arr3 = Merge(&arr1, &arr2);
+
     Display(*arr3);
-    
 
+    free(arr3);
 
-
-    
-    
-    
+    return 0;
 }
