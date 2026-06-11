@@ -7,3 +7,4 @@
 *.dSYM/
 *.swp
 todo.txt
+.vscode/
