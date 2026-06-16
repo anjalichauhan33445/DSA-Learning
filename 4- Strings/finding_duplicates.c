@@ -39,9 +39,30 @@ void duplicate2(char *s){
     }
 }
 
+void duplicateBits(char *s){
+    long int H,x;
+    H = x = 0;
+    toLower(s);
+
+    for(int i = 0; s[i]!='\0'; i++){
+        
+        if(s[i] < 'a' || s[i] > 'z')
+            continue;
+        x = 1;
+        x = x << (s[i] - 97);
+
+        if((H & x)> 0){
+            printf("%c is duplicate\n",s[i]);
+        } 
+        else{
+            H = H | x;
+        }
+    }
+}
+
 int main(){
     char s[] = "Ice Cream";
     //duplicate1(s);
-    duplicate2(s);
+    duplicateBits(s);
     return 0;
 }

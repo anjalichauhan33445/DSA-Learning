@@ -21,6 +21,8 @@ bool isPalindrome(char *s){
     return true;
 }
 
+
+
 int main(){
     char str[] = "madam";
     
