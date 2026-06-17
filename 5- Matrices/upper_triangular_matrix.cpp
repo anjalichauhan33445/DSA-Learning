@@ -26,15 +26,15 @@ UpperTriangularMatrix :: UpperTriangularMatrix(int n){
         A[i] = 0;
 }
 void UpperTriangularMatrix :: set(int i, int j, int x){
-    if(i>=j){
-        int index = (i*(i-1)/2) + j-1;
+    if(i<=j){
+        int index = (i-1)*n - ((i-1)*(i-2))/2 + (j-i);
         A[index] = x;
     }
 }
 
 int UpperTriangularMatrix :: get(int i , int j){
-     if(i>=j){
-        int index = (i*(i-1)/2) + j-1;
+     if(i<=j){
+        int index = (i-1)*n - ((i-1)*(i-2))/2 + (j-i);
         return A[index];
     }
     return 0;
@@ -44,7 +44,7 @@ int UpperTriangularMatrix :: get(int i , int j){
 void UpperTriangularMatrix :: display(){
     for(int i = 1; i<=n; i++){
         for(int j = 1; j<=n; j++){
-            if(i>=j){
+            if(i<=j){
                 cout<<get(i,j)<<" ";
             }
             else cout<< "0 ";
