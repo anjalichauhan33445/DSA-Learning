@@ -72,8 +72,10 @@ struct Sparse *add(struct Sparse *s1, struct Sparse *s2){
                 sum->e[k++] = s2->e[j++];
             }
             else{
-                sum->e[k] = s1->e[i++];
+                sum->e[k] = s1->e[i];
                 sum->e[k++].x = s1->e[i].x + s2->e[j].x;
+                i++;
+                j++;
             }
         }
     }
