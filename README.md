@@ -6,9 +6,9 @@ This repository contains my implementations of Data Structures and Algorithms co
 
 - [x] Recursion
 - [x] Array Representations
-- [ ] Arrays
-- [ ] Strings
-- [ ] Matrices
+- [x] Arrays
+- [x] Strings
+- [x] Matrices
 - [ ] Linked Lists
 - [ ] Stacks
 - [ ] Queues

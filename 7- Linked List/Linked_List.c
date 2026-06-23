@@ -102,15 +102,6 @@ int Rmax(struct Node *p){
     return x>p->data?x:p->data;
 }
 
-// struct Node* Search(struct Node* p, int key){
-//     while(p!=NULL){
-//         if(key==p->data){
-//             return p;
-//         }
-//         p = p->next;
-//     }
-//     return NULL;
-// } 
 
 // Move to Front 
 struct Node* LSearch(struct Node *p, int key){
@@ -131,12 +122,22 @@ struct Node* LSearch(struct Node *p, int key){
    return NULL;
 }
 
+struct Node* RSearch(struct Node* p, int key){
+    if(p==NULL){
+        return NULL;
+    }
+    if(key==p->data){
+        return p;
+    }
+    return RSearch(p->next, key);
+}
+
 int main(){
     int arr[] = {10,20,30,40,50};
 
     create(arr,5);
     Rdisplay(first);
-    struct Node *temp = LSearch(first,20);
+    struct Node *temp = RSearch(first,20);
     printf("The number of nodes are: %d\n",Rcount(first));
     printf("The sum of all the nodes are: %d\n",Rsum(first));
     printf("The maximum element in the Linked List is: %d\n",Rmax(first));
