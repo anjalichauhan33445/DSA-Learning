@@ -101,13 +101,31 @@ int Rmax(struct Node *p){
     x = Rmax(p->next);
     return x>p->data?x:p->data;
 }
+
+struct Node* Search(struct Node* p, int key){
+    while(p!=NULL){
+        if(key==p->data){
+            return p;
+        }
+        p = p->next;
+    }
+    return NULL;
+}
+
 int main(){
     int arr[] = {10,20,30,40,50};
+
     create(arr,5);
     Rdisplay(first);
+    struct Node *temp = Search(first,20);
     printf("The number of nodes are: %d\n",Rcount(first));
     printf("The sum of all the nodes are: %d\n",Rsum(first));
-    printf("The maximum element in the Linked List is: %d",Rmax(first));
+    printf("The maximum element in the Linked List is: %d\n",Rmax(first));
+    
+    if(temp){
+        printf("The element %d is at %p location\n",20,(void *)temp);
+    }
+    
     
     return 0;
 }
