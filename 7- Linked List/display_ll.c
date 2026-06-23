@@ -84,12 +84,30 @@ int Rsum(struct Node *p){
     return Rsum(p->next)+p->data; 
 }
 
+int max(struct Node* p){
+    int max = INT32_MIN;
+    while(p!=NULL){
+        if(p->data > max) max = p->data;
+        p = p->next;
+    }
+    return max;
+}
+
+int Rmax(struct Node *p){
+    int x;
+    if(p==NULL){
+        return INT32_MIN ;
+    }
+    x = Rmax(p->next);
+    return x>p->data?x:p->data;
+}
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
     Rdisplay(first);
     printf("The number of nodes are: %d\n",Rcount(first));
     printf("The sum of all the nodes are: %d\n",Rsum(first));
+    printf("The maximum element in the Linked List is: %d",Rmax(first));
     
     return 0;
 }
