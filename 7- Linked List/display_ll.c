@@ -68,12 +68,28 @@ int Rcount(struct Node *p){
     return Rcount(p->next)+1;
 }
 
+int Sum(struct Node *p){
+    int sum = 0;
+    while(p!=NULL){
+        sum+=p->data;
+        p = p->next;
+    }
+    return sum;
+}
+
+int Rsum(struct Node *p){
+    if(p==NULL){
+        return 0;
+    }
+    return Rsum(p->next)+p->data; 
+}
 
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
     Rdisplay(first);
     printf("The number of nodes are: %d\n",Rcount(first));
+    printf("The sum of all the nodes are: %d\n",Rsum(first));
     
     return 0;
 }
