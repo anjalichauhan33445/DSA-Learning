@@ -26,6 +26,7 @@ void create(int arr[], int n){
         last = t;
     }
 }
+
 void display(){
    
     struct Node* p = first;
@@ -34,10 +35,20 @@ void display(){
         p = p->next;
     }
 }
+
+void Rdisplay(struct Node* p){
+    
+    if(p!=NULL){
+        printf("%d\n",p->data);
+        Rdisplay(p->next);
+    }
+
+
+}
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
-    display();
+    Rdisplay(first);
     
     
     return 0;
