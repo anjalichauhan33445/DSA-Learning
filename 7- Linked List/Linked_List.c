@@ -27,9 +27,9 @@ void create(int arr[], int n){
     }
 }
 
-void display(){
+void display(struct Node *head){
    
-    struct Node* p = first;
+    struct Node* p = head;
     while(p){
         printf("%d\n",p->data);
         p = p->next;
@@ -131,20 +131,36 @@ struct Node* RSearch(struct Node* p, int key){
     }
     return RSearch(p->next, key);
 }
+void InsertFirst(int x){
+    struct Node *t = (struct Node*)malloc(sizeof(struct Node));
+    t->data = x;
+    t->next = first;
+    first = t;
+}
 
 int main(){
     int arr[] = {10,20,30,40,50};
 
     create(arr,5);
-    Rdisplay(first);
-    struct Node *temp = RSearch(first,20);
-    printf("The number of nodes are: %d\n",Rcount(first));
-    printf("The sum of all the nodes are: %d\n",Rsum(first));
-    printf("The maximum element in the Linked List is: %d\n",Rmax(first));
+
+    printf("Before Insertion:\n");
+    display(first);
+
+    InsertFirst(80);
+
+    printf("After Insertion:\n");
+    display(first);
+
+
+
+    // struct Node *temp = RSearch(first,20);
+    // printf("The number of nodes are: %d\n",Rcount(first));
+    // printf("The sum of all the nodes are: %d\n",Rsum(first));
+    // printf("The maximum element in the Linked List is: %d\n",Rmax(first));
     
-    if(temp){
-        printf("The element %d is at %p location\n",20,(void *)temp);
-    }
+    // if(temp){
+    //     printf("The element %d is at %p location\n",20,(void *)temp);
+    // }
     
     
     return 0;
