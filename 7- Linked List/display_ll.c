@@ -39,22 +39,41 @@ void display(){
 void Rdisplay(struct Node* p){
     
     if(p!=NULL){
-        // printf("%d\n",p->data);
-        // Rdisplay(p->next);
+        printf("%d\n",p->data);
+        Rdisplay(p->next);
 
         //Display the elements in reverse order
-
+        /*
         Rdisplay(p->next);
         printf("%d\n",p->data);
+        */
     }
 
 
 }
+
+int count(struct Node *p){
+    int count= 0;
+    while(p!=NULL){
+        count++;
+        p = p->next;
+    }
+    return count;
+}
+
+int Rcount(struct Node *p){
+    if(p==NULL){
+        return 0;
+    }
+    return Rcount(p->next)+1;
+}
+
+
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
     Rdisplay(first);
-    
+    printf("The number of nodes are: %d\n",Rcount(first));
     
     return 0;
 }
