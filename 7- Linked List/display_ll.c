@@ -39,8 +39,13 @@ void display(){
 void Rdisplay(struct Node* p){
     
     if(p!=NULL){
-        printf("%d\n",p->data);
+        // printf("%d\n",p->data);
+        // Rdisplay(p->next);
+
+        //Display the elements in reverse order
+
         Rdisplay(p->next);
+        printf("%d\n",p->data);
     }
 
 
