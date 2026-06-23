@@ -138,21 +138,37 @@ void InsertFirst(int x){
     first = t;
 }
 
+void InsertAt(int pos, int x){
+    if(pos==0){
+        InsertFirst(x);
+        return;
+    }
+    struct Node *t = (struct Node*)malloc(sizeof(struct Node));
+    t->data = x;
+    struct Node* p = first;
+    for(int i = 0; i<pos-1; i++){
+        p = p->next;
+    }
+    t->next = p->next;
+    p->next = t;
+
+    
+}
 int main(){
     int arr[] = {10,20,30,40,50};
 
     create(arr,5);
-
+   
     printf("Before Insertion:\n");
     display(first);
 
-    InsertFirst(80);
+    InsertAt(0,90);
 
     printf("After Insertion:\n");
     display(first);
 
-
-
+    
+    
     // struct Node *temp = RSearch(first,20);
     // printf("The number of nodes are: %d\n",Rcount(first));
     // printf("The sum of all the nodes are: %d\n",Rsum(first));
