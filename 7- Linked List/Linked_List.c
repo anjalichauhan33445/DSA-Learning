@@ -4,7 +4,9 @@
 struct Node{
     int data;
     struct Node* next;
-}*first;
+};
+struct Node *first = NULL;
+struct Node *last = NULL;
 
 
 void create(int arr[], int n){
@@ -12,7 +14,7 @@ void create(int arr[], int n){
     first = NULL;
     return;
         }
-    struct Node* t,*last;
+    struct Node* t;
     first = (struct Node*)malloc(sizeof(struct Node));
     first->data = arr[0];
     first->next = NULL;
@@ -138,7 +140,7 @@ void InsertFirst(int x){
     first = t;
 }
 
-void InsertAt(int pos, int x){
+void Insert(int pos, int x){
     if(pos==0){
         InsertFirst(x);
         return;
@@ -146,7 +148,7 @@ void InsertAt(int pos, int x){
     struct Node *t = (struct Node*)malloc(sizeof(struct Node));
     t->data = x;
     struct Node* p = first;
-    for(int i = 0; i<pos-1; i++){
+    for(int i = 0; i<pos-1 && p; i++){
         p = p->next;
     }
     t->next = p->next;
@@ -154,29 +156,32 @@ void InsertAt(int pos, int x){
 
     
 }
+void InsertLast(int x){
+    struct Node *t = (struct Node*)malloc(sizeof(struct Node));
+    t->data = x;
+    t->next = NULL;
+    if(first==NULL){
+        first = last = t;
+    }
+    else{
+        last->next = t;
+        last = t;
+    }
+}
+
 int main(){
-    int arr[] = {10,20,30,40,50};
+    //int arr[] = {10,20,30,40,50};
+    InsertLast(10);
+    InsertLast(20);
+    InsertLast(40);
+    InsertLast(50);
 
-    create(arr,5);
+    display(first);
    
-    printf("Before Insertion:\n");
-    display(first);
-
-    InsertAt(0,90);
-
-    printf("After Insertion:\n");
-    display(first);
+    
 
     
-    
-    // struct Node *temp = RSearch(first,20);
-    // printf("The number of nodes are: %d\n",Rcount(first));
-    // printf("The sum of all the nodes are: %d\n",Rsum(first));
-    // printf("The maximum element in the Linked List is: %d\n",Rmax(first));
-    
-    // if(temp){
-    //     printf("The element %d is at %p location\n",20,(void *)temp);
-    // }
+
     
     
     return 0;
