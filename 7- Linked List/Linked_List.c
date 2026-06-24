@@ -198,11 +198,42 @@ void InsertSorted(int x){
     }
 }
 }
+
+int delete(int pos){
+    int x = -1;
+    struct Node *p, *q;
+    
+
+    if(pos==1){
+        p = first;
+        x = p->data;
+        first = first->next;
+        free(p);
+
+    }
+    else{
+        q = NULL;
+        p = first;
+        for(int i = 0; i<pos-1 && p; i++){
+        q = p;
+        p = p->next;
+    }
+    if(p){
+    q->next = p->next;
+    x = p->data;
+    free(p);
+    }
+}
+    return x;
+    
+}
+
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
 
-    InsertSorted(0);
+
+    printf("%d was deleted!\n",delete(1));
 
     display(first);
    
