@@ -169,12 +169,40 @@ void InsertLast(int x){
     }
 }
 
+void InsertSorted(int x){
+    struct Node* p = first;
+    struct Node* q = NULL;
+
+    struct Node *t = (struct Node*)malloc(sizeof(struct Node));
+    t->data = x;
+    t->next = NULL;
+    if(first==NULL){
+        first = last = t;
+    }
+    else{
+    while(p && p->data<x){
+        q = p;
+        p = p->next;
+    }
+    if(q==NULL){
+        t->next = first;
+        first = t;
+    }
+    else{
+    t->next = q->next;
+    q->next = t;
+
+    if(p==NULL){
+        last = p;
+    }
+    }
+}
+}
 int main(){
-    //int arr[] = {10,20,30,40,50};
-    InsertLast(10);
-    InsertLast(20);
-    InsertLast(40);
-    InsertLast(50);
+    int arr[] = {10,20,30,40,50};
+    create(arr,5);
+
+    InsertSorted(0);
 
     display(first);
    
