@@ -5,8 +5,8 @@
 struct Node{
     int data;
     struct Node* next;
-};
-struct Node *first = NULL;
+}*first = NULL,*second = NULL,*third = NULL;
+
 struct Node *last = NULL;
 
 
@@ -29,6 +29,26 @@ void create(int arr[], int n){
         last = t;
     }
 }
+void create2(int arr[], int n){
+    if(n == 0){
+    second = NULL;
+    return;
+        }
+    struct Node* t;
+    second = (struct Node*)malloc(sizeof(struct Node));
+    second->data = arr[0];
+    second->next = NULL;
+    last = second;
+
+    for(int i = 1; i<n; i++){
+        t = (struct Node*)malloc(sizeof(struct Node));
+        t->data = arr[i];
+        t->next = NULL;
+        last->next = t;
+        last = t;
+    }
+}
+
 
 void display(struct Node *head){
    
@@ -330,19 +350,29 @@ void Reverse(){
     first = q;
 
 }
+
+void Concat(struct Node *first, struct Node *second){
+    struct Node*p = first;
+
+    while(p->next!=NULL){
+        p = p->next;
+    }
+    p->next = second;
+    free(second);
+}
 int main(){
     int arr[] = {10,20,30,40,50};
+    int arr2[] = {60,70,80,90,100};
     create(arr,5);
+    create2(arr2,5);
 
-    printf("Before Reversal\n");
+    printf("First List\n");
+   
     display(first);
-
     
-    Reverse();
-    
+    printf("Second List\n");
+    display(second);
 
-    printf("After Reversal\n");
-    display(first);
     
 
     
