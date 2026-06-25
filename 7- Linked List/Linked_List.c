@@ -116,8 +116,9 @@ struct Node* LSearch(struct Node *p, int key){
         q->next = p->next;
         p->next = first;
         first = p;
+    }
         return p;
-        }
+        
     }
     q = p;
     p = p->next;
@@ -139,13 +140,19 @@ void InsertFirst(int x){
     t->data = x;
     t->next = first;
     first = t;
+
+    if(last == NULL){
+        last = t;
+    }
 }
 
 void Insert(int pos, int x){
+    
     if(pos==0){
         InsertFirst(x);
         return;
     }
+    
     struct Node *t = (struct Node*)malloc(sizeof(struct Node));
     t->data = x;
     struct Node* p = first;
@@ -194,40 +201,50 @@ void InsertSorted(int x){
     q->next = t;
 
     if(p==NULL){
-        last = p;
+        last = t;
     }
     }
 }
 }
 
 
-int delete(int pos){
+int Delete(int pos){
     int x = -1;
     struct Node *p, *q;
-    
 
-    if(pos==1){
+    if(pos == 1){
         p = first;
-        x = p->data;
-        first = first->next;
-        free(p);
 
+        if(p){
+            x = p->data;
+            first = first->next;
+
+            if(first == NULL)   
+                last = NULL;
+
+            free(p);
+        }
     }
     else{
         q = NULL;
         p = first;
-        for(int i = 0; i<pos-1 && p; i++){
-        q = p;
-        p = p->next;
+
+        for(int i = 0; i < pos-1 && p; i++){
+            q = p;
+            p = p->next;
+        }
+
+        if(p){
+            q->next = p->next;
+
+            if(p == last)
+                last = q;
+            x = p->data;
+            free(p);
+        }
     }
-    if(p){
-    q->next = p->next;
-    x = p->data;
-    free(p);
-    }
-}
+
     return x;
-    
 }
 
 
@@ -267,18 +284,42 @@ void removeDup(){
     }
 }
 
-int main(){
-    int arr[] = {3,5,5,8,8,8};
-    create(arr,6);
+// Reversing the data of the nodes while links remain the same [Not prefferable]
+void ReverseElements(){
+    int i=0;
+    int n = count(first);
+   
+    int *arr = (int *)malloc(n * sizeof(int));
 
-    printf("Before removal\n");
+    struct Node*p = first;
+
+    while(p!=NULL){
+        arr[i] = p->data;
+        p = p->next;
+        i++;
+    }
+    p = first;
+    i--;
+    while(p!=NULL){
+        p->data = arr[i];
+        p = p->next;
+        i--;
+    }
+    free(arr);
+}
+
+int main(){
+    int arr[] = {10,20,30,40,50};
+    create(arr,5);
+
+    printf("Before Reversal\n");
     display(first);
 
-    if(isSorted()){
-    removeDup();
-    }
+    
+    ReverseElements();
+    
 
-    printf("After Removal\n");
+    printf("After Reversal\n");
     display(first);
     
 
