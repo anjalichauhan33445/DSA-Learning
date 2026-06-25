@@ -351,27 +351,24 @@ void Reverse(){
 
 }
 
-void Concat(struct Node *first, struct Node *second){
-    struct Node*p = first;
+void Concat(struct Node *p, struct Node *q){
+    
+    third = p;
 
     while(p->next!=NULL){
         p = p->next;
     }
-    p->next = second;
-    free(second);
+    p->next = q;
 }
+
 int main(){
     int arr[] = {10,20,30,40,50};
     int arr2[] = {60,70,80,90,100};
     create(arr,5);
     create2(arr2,5);
 
-    printf("First List\n");
-   
-    display(first);
-    
-    printf("Second List\n");
-    display(second);
+    Concat(first,second);
+    display(third);
 
     
 

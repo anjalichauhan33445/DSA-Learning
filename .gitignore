@@ -7,9 +7,15 @@
 *.dSYM/
 *.swp
 todo.txt
-.vscode/
 tempCodeRunnerFile.c
 a.out
 Linked_List
-Strivers/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.tmp
+
+
 
