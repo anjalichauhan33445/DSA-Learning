@@ -159,8 +159,13 @@ void Insert(int pos, int x){
     for(int i = 0; i<pos-1 && p; i++){
         p = p->next;
     }
+    if(p){
     t->next = p->next;
     p->next = t;
+    }
+    else{
+        free(t);
+    }
 
     
 }
@@ -308,6 +313,23 @@ void ReverseElements(){
     free(arr);
 }
 
+void Reverse(){
+    struct Node *r,*q,*p;
+    r = NULL;
+    q = NULL;
+    p = first;
+
+    last = first;
+
+    while(p!=NULL){
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r;
+    }
+    first = q;
+
+}
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
@@ -316,7 +338,7 @@ int main(){
     display(first);
 
     
-    ReverseElements();
+    Reverse();
     
 
     printf("After Reversal\n");
