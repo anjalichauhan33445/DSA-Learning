@@ -231,7 +231,10 @@ int delete(int pos){
 }
 
 
+
 bool isSorted(){
+
+    
     struct Node* p = first;
     int x = INT32_MIN;
     while(p!=NULL){
@@ -245,22 +248,38 @@ bool isSorted(){
 }
 
 
+// Remove duplicate elements from a sorted linked list
+void removeDup(){
+    if(first==NULL) return;
+    struct Node *p = first;
+    struct Node *q = first->next;
+
+    while(q!=NULL){
+        if((p->data!=q->data)){
+            p = q;
+            q = q->next;
+        }
+        else{
+            p->next = q->next;
+            free(q);
+            q = p->next;
+        }
+    }
+}
+
 int main(){
-    int arr[] = {10,20,30,40,50};
-    create(arr,5);
+    int arr[] = {3,5,5,8,8,8};
+    create(arr,6);
 
+    printf("Before removal\n");
     display(first);
+
     if(isSorted()){
-        printf("Sorted\n");
-    }
-    else{
-        printf("Not Sorted\n");
+    removeDup();
     }
 
-   
-   
-    
-
+    printf("After Removal\n");
+    display(first);
     
 
     
