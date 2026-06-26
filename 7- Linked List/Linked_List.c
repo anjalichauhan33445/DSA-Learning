@@ -361,13 +361,43 @@ void Concat(struct Node *p, struct Node *q){
     p->next = q;
 }
 
+
+void Merge(struct Node* p,struct Node *q){
+    struct Node *l = NULL;
+    if(p->data<q->data){
+        third = l = p;
+        p = p->next;
+        l->next = NULL;
+    }
+    else{
+        third = l = q;
+        q = q->next;
+        l->next = NULL;
+    }
+    while(p && q){
+        if(p->data<q->data){
+            l->next = p;
+            l = p;
+            p = p->next;
+            l->next = NULL;
+        }
+        else{
+            l->next = q;
+            l = q;
+            q = q->next;
+            l->next = NULL;
+        }
+    }
+    if(p) l->next = p;
+    else l->next = q;
+}
 int main(){
     int arr[] = {10,20,30,40,50};
-    int arr2[] = {60,70,80,90,100};
+    int arr2[] = {15,25,35,45,55};
     create(arr,5);
     create2(arr2,5);
 
-    Concat(first,second);
+    Merge(first,second);
     display(third);
 
     
