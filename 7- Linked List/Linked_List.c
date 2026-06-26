@@ -391,13 +391,38 @@ void Merge(struct Node* p,struct Node *q){
     if(p) l->next = p;
     else l->next = q;
 }
+
+
+bool isLoop(struct Node *f){
+
+    struct Node *p, *q;
+    p = q = f;
+
+    do{
+        p = p->next;
+        q = q->next;
+        q = q?q->next:q;
+    }
+    while(p && q && p!=q);
+
+    if(p==q) return true;
+    return false;
+}
 int main(){
     int arr[] = {10,20,30,40,50};
-    int arr2[] = {15,25,35,45,55};
+    struct Node* t1, *t2;
     create(arr,5);
-    create2(arr2,5);
+    t1 = first->next->next;
+    t2 = first->next->next->next->next;
+    t2->next = t1;
 
-    Merge(first,second);
+
+   if(isLoop(first)){
+    printf("Loop Detected\n");
+   }
+   else{
+    printf("Linear\n");
+   }
     display(third);
 
     
