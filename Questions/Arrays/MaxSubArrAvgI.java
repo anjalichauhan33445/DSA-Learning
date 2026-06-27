@@ -8,6 +8,7 @@ class MaxSubArrAvgI {
         int k = 4;
         double max_avg_sum = optimal(arr, k);
         System.out.println("The Maximum Average subarray is "+max_avg_sum);
+        System.out.println("The Maximum Average subarray is "+bruteForce(arr, k));
     }
     static double bruteForce(int[] arr, int k) {
         
