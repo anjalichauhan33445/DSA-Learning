@@ -42,9 +42,48 @@ void RDisplay(struct Node *h){
     }
     flag = 0;
 }
+
+void Insert(int pos, int x){
+    struct Node *p = head;
+    struct Node *t;
+   
+    
+
+    if(pos==0){
+        t = (struct Node*)malloc(sizeof(struct Node));
+        t->data = x;
+        if(head==NULL){
+            head = t;
+            head->next = head;
+        }
+        else{
+        while(p->next!=head){
+            p = p->next;
+        }
+       t->next = head;
+       p->next = t;
+       head = t;
+             }
+    }
+    else{
+         p = head;
+    for(int i = 0; i<pos-1; i++){
+        p = p->next;
+    }
+    t = (struct Node*)malloc(sizeof(struct Node));
+    t->data = x;
+    t->next = p->next;
+    p->next = t;
+    
+
+
+}
+}
+
 int main(){
-    int arr[] = {10,20,30,40,50};
-    create(arr,5);
-    RDisplay(head);
+    int arr[] = {20};
+    create(arr,1);
+    Insert(0,90);
+    display(head);
     return 0;
 }
