@@ -43,11 +43,22 @@ void RDisplay(struct Node *h){
     flag = 0;
 }
 
+int Length(){
+    struct Node *p = head;
+    int ct = 0;
+    do{
+        ct++;
+        p = p->next;
+    }
+    while(p!=head);
+
+    return ct;
+}
 void Insert(int pos, int x){
     struct Node *p = head;
     struct Node *t;
    
-    
+    if(pos<0 || pos>Length()) return;
 
     if(pos==0){
         t = (struct Node*)malloc(sizeof(struct Node));
@@ -81,9 +92,9 @@ void Insert(int pos, int x){
 }
 
 int main(){
-    int arr[] = {20};
-    create(arr,1);
-    Insert(0,90);
+    int arr[] = {10,20,30,40,50};
+    create(arr,5);
+    Insert(3,100);
     display(head);
     return 0;
 }
