@@ -91,10 +91,50 @@ void Insert(int pos, int x){
 }
 }
 
+int Delete(int pos){
+    int x = -1;
+    struct Node *p,*q;
+    p = head;
+    if(pos<1 || pos>Length()) return x;
+    if(pos==1){
+        while(p->next!=head){
+            p = p->next;
+        }
+        x = head->data;
+        if(p==head){
+            free(head);
+            head = NULL;
+        }
+        else{
+        p->next = head->next;
+      
+        free(head);
+        head = p->next;
+        }
+    }
+    else{
+    for(int i = 0; i<pos-2; i++){
+        p = p->next;
+    }
+    q = p->next;
+    p->next = q->next;
+    x = q->data;
+
+    free(q);
+}
+    return x;
+
+}
+
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
-    Insert(3,100);
+    printf("\nBefore Deletion\n");
     display(head);
+
+    printf("\n%d deleted from the List\n",Delete(1));
+    printf("\nList After Deletion\n");
+    display(head);
+    
     return 0;
 }
