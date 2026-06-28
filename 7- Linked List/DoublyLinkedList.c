@@ -41,10 +41,39 @@ int Length(){
     }
     return len;
 }
+
+void Insert(int pos, int x){
+    struct Node *t;
+    if(pos<0 || pos>Length()) return;
+    if(pos==0){
+        t = (struct Node*)malloc(sizeof(struct Node));
+        t->data = x;
+        t->prev = NULL;
+        t->next = first;
+        first->prev = t;
+        first = t;
+    }
+    else{
+        struct Node *p = first;
+        for(int i = 0; i<pos-1; i++){
+            p = p->next;
+        }
+       t = (struct Node*)malloc(sizeof(struct Node));
+       t->data = x;
+       t->prev = p;
+       t->next = p->next;
+       if(p->next){
+        p->next->prev = t;
+       }
+       p->next = t;
+    }
+}
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
-    printf("\nThe length of the Linked List is %d\n",Length());
+   
+    Insert(5,100);    
     Display();
+    
     return 0;
 }
