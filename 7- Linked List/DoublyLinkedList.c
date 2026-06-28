@@ -31,9 +31,20 @@ void Display(){
         p = p->next;
     }
 }
+
+int Length(){
+    int len = 0;
+    struct Node *p =first;
+    while(p){
+        len++;
+        p = p->next;
+    }
+    return len;
+}
 int main(){
     int arr[] = {10,20,30,40,50};
     create(arr,5);
+    printf("\nThe length of the Linked List is %d\n",Length());
     Display();
     return 0;
 }
