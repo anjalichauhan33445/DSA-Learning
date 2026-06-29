@@ -1,8 +1,6 @@
 import java.util.*;
 class MoveZeroes{
-      static void moveZeroes(int[] nums) {
-        // int i = 0;
-        // int j = nums.length-1;
+      static void bruteForce(int[] nums) {
         ArrayList<Integer> list = new ArrayList<>();
 
         for(int i = 0; i<nums.length; i++){
@@ -20,18 +18,35 @@ class MoveZeroes{
         System.out.println(Arrays.toString(nums));
         
     }
+    static void optimal(int[] nums){
+        int n = nums.length;
+        int zero = -1;
+
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]==0){
+                zero = i;
+                break;
+            }
+        }
+        if(zero==-1) return;
+        int j = zero;
+        for(int i = j+1; i<nums.length; i++){
+            if(nums[i]!=0){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+    }
 
     
     public static void main(String[] args) {
         int[] nums = {12,0,0,3,12};
-        //moveZeroes(nums);
-        int j;
-        for(j = 0; j<nums.length; j++){
-            if(nums[j]==0) break; 
-        }
-        System.out.println(j);
-        int x= -2;
-        System.out.println(Math.abs(-3));
+        //bruteForce(nums);
+        optimal(nums);
+    
 
     }
 }
