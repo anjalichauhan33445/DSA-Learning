@@ -9,7 +9,7 @@ This repository contains my implementations of Data Structures and Algorithms co
 - [x] Arrays
 - [x] Strings
 - [x] Matrices
-- [ ] Linked Lists
+- [x] Linked Lists
 - [ ] Stacks
 - [ ] Queues
 - [ ] Trees
