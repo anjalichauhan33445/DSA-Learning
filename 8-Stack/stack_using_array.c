@@ -51,9 +51,16 @@ int stackTop(struct Stack st){
     if(st.Top==-1) return -1;
     else return st.A[st.Top];
 }
+
+int isFull(struct Stack st){
+    if(st.Top == st.size-1)
+        return 1;
+    else
+        return 0;
+}
 int main(){
     struct Stack st;
-    st.size = 5;
+    st.size = 3;
     st.Top = -1;
     st.A = (int *)malloc(st.size*sizeof(int));
 
@@ -62,7 +69,10 @@ int main(){
     Push(&st,30);
     Display(st);
     
-    printf("The element at Top is %d\n",stackTop(st));
+    if(isFull(st))
+        printf("The stack is Full");
+    else
+        printf("The stack is Not Full");    
 
     free(st.A);
     return 0;
