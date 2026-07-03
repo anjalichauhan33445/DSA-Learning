@@ -46,6 +46,11 @@ int Peek(struct Stack st, int pos){
     }
     return x;
 }
+
+int stackTop(struct Stack st){
+    if(st.Top==-1) return -1;
+    else return st.A[st.Top];
+}
 int main(){
     struct Stack st;
     st.size = 5;
@@ -57,7 +62,7 @@ int main(){
     Push(&st,30);
     Display(st);
     
-    printf("The element at position %d is %d\n",0,Peek(st,0));
+    printf("The element at Top is %d\n",stackTop(st));
 
     free(st.A);
     return 0;
