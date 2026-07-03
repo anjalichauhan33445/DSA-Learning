@@ -16,6 +16,7 @@ DoublyLinkedList
 CircularDoublyLinkedList
 basic_stack_implementation
 FindMiddleLL
+stack
 *.class
 *.log
 *.jar
