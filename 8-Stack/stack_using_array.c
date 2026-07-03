@@ -58,21 +58,31 @@ int isFull(struct Stack st){
     else
         return 0;
 }
+
+int isEmpty(struct Stack st){
+    if(st.Top == -1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
 int main(){
     struct Stack st;
     st.size = 3;
     st.Top = -1;
     st.A = (int *)malloc(st.size*sizeof(int));
 
-    Push(&st,10);
-    Push(&st,20);
-    Push(&st,30);
+    // Push(&st,10);
+    // Push(&st,20);
+    // Push(&st,30);
     Display(st);
     
-    if(isFull(st))
-        printf("The stack is Full");
+    if(isEmpty(st))
+        printf("The stack is Empty");
     else
-        printf("The stack is Not Full");    
+        printf("The stack is Not Empty");    
 
     free(st.A);
     return 0;
