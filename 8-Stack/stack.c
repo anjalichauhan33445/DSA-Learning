@@ -35,6 +35,17 @@ int Pop(struct Stack *st){
 
 }
 
+int Peek(struct Stack st, int pos){
+    int x = -1;
+    
+    if(pos<=0 || pos>st.Top+1){
+        printf("Invalid Position\n");
+    }
+    else{
+        x = st.A[st.Top-pos+1];
+    }
+    return x;
+}
 int main(){
     struct Stack st;
     st.size = 5;
@@ -45,8 +56,9 @@ int main(){
     Push(&st,20);
     Push(&st,30);
     Display(st);
-    printf("Element %d deleted from the stack\n",Pop(&st));
-    Display(st);
+    
+    printf("The element at position %d is %d\n",0,Peek(st,0));
+
     free(st.A);
     return 0;
 }
