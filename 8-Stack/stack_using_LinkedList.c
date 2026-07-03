@@ -19,6 +19,21 @@ void push(int x){
     }    
 }
 
+int pop(){
+    int x = -1;
+    if(Top==NULL){
+        printf("Stack Underflow..\n");
+    }
+
+    else{    
+    struct Node *p = Top;
+    Top = Top->next;
+    x = p->data;
+    free(p);
+    }
+    return x;
+    
+}
 
 void Display(){
     struct Node *p = Top;
@@ -35,6 +50,8 @@ int main(){
     push(40);
     Display();
 
-    //printf("Element %d deleted from the Stack:\n",pop());
+    printf("Element %d deleted from the Stack:\n",pop());
+
+    Display();
     return 0;
 }
