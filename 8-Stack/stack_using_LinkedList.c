@@ -43,15 +43,20 @@ void Display(){
     }
 }
 
+int isEmpty(){
+    return Top? 0:1;
+}
+
 int main(){
-    push(10);
-    push(20);
-    push(30);
-    push(40);
+    // push(10);
+    // push(20);
+    // push(30);
+    // push(40);
     Display();
+    if(isEmpty()) printf("The stack is empty\n");
+    else printf("The stack isn't Empty\n");
+    
 
-    printf("Element %d deleted from the Stack:\n",pop());
-
-    Display();
+   
     return 0;
 }
