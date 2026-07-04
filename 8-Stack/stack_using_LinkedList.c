@@ -51,12 +51,27 @@ int isFull(){
     struct Node *t = (struct Node *)malloc(sizeof(struct Node));
     return t?0:1;
 }
+
+int stackTop(){
+    if(Top) return Top->data;
+    return -1;
+}
+
 int main(){
+    int top_element;
     push(10);
     push(20);
     push(30);
     push(40);
     Display();
-       
+    
+    top_element = stackTop();
+    if(top_element!=-1){
+        printf("The Element at Stack Top is %d\n",stackTop());
+    }
+    else{
+        printf("The Stack is Empty\n");
+    }
+
     return 0;
 }
