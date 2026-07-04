@@ -6,12 +6,29 @@ struct Node{
     struct Node *next;
 } *Top = NULL;
 
+int isEmpty(){
+    return Top? 0:1;
+}
 
-void push(int x){
+int isFull(){
     struct Node *t = (struct Node *)malloc(sizeof(struct Node));
-    if(t==NULL)
+    if(t){
+        free(t);
+        return 0;
+    }
+    return 1;
+}
+
+int stackTop(){
+    if(Top) return Top->data;
+    return -1;
+}
+
+void push(int x){ 
+    if(isFull())
         printf("Stack Overflow..\n");
     else{
+        struct Node *t = (struct Node *)malloc(sizeof(struct Node));
         t->data = x;
         t->next = Top;
         Top = t;
@@ -21,7 +38,7 @@ void push(int x){
 
 int pop(){
     int x = -1;
-    if(Top==NULL){
+    if(isEmpty()){
         printf("Stack Underflow..\n");
     }
 
@@ -43,35 +60,24 @@ void Display(){
     }
 }
 
-int isEmpty(){
-    return Top? 0:1;
-}
-
-int isFull(){
-    struct Node *t = (struct Node *)malloc(sizeof(struct Node));
-    return t?0:1;
-}
-
-int stackTop(){
-    if(Top) return Top->data;
+int Peek(int pos){
+    struct Node *p = Top;
+    for(int i = 0; p!=NULL && i< pos-1; i++){
+        p = p->next;
+    }
+    if(p) return p->data;
     return -1;
 }
 
 int main(){
-    int top_element;
+
     push(10);
     push(20);
     push(30);
     push(40);
     Display();
     
-    top_element = stackTop();
-    if(top_element!=-1){
-        printf("The Element at Stack Top is %d\n",stackTop());
-    }
-    else{
-        printf("The Stack is Empty\n");
-    }
-
+    printf("The Element at position %d is  %d\n",3,Peek(3));
+    
     return 0;
 }
