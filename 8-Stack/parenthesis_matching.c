@@ -25,6 +25,7 @@ int pop(struct Stack *st){
     return x;
 }
 
+//rounded brackets only
 int isBalanced1(char *exp){
     struct Stack st;
     st.size = strlen(exp);
@@ -45,9 +46,31 @@ int isBalanced1(char *exp){
     return isEmpty(st)? 1 : 0;
 }
 
+int isBalanced2(char *exp){
+    struct Stack st;
+    st.Top = -1;
+    st.size = strlen(exp);
+    st.S = (char *)malloc(st.size*sizeof(char));
+
+    for(int i = 0; exp[i]!='\0'; i++){
+        if(exp[i]=='(' || exp[i]=='[' || exp[i]=='{'){
+            push(&st,exp[i]);
+        }
+        else if(exp[i]==')' || exp[i]==']' || exp[i]=='}'){
+            if(isEmpty(st))
+                return 0;
+            char ch = pop(&st);
+            if(!(exp[i]-ch==1 && exp[i]==')' 
+                || exp[i]-ch==2 && exp[i]==']'
+                || exp[i]-ch==2 && exp[i]=='}')) return 0;
+        }
+    }
+    return isEmpty(st)?1:0;
+}
+
 int main(){
-    char exp[] = "((a+b)*(c-d))";
-    if(isBalanced1(exp)){
+    char exp[] = "{([a+b]*[c-d])/e}";
+    if(isBalanced2(exp)){
         printf("The expression is Balanced\n");
     }
     else{
