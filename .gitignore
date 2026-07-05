@@ -14,8 +14,11 @@ Linked_List
 CircularLinkedList
 DoublyLinkedList
 CircularDoublyLinkedList
+parenthesis_matching
 basic_stack_implementation
 FindMiddleLL
+stack_using_array
+stack_using_LinkedList
 stack
 *.class
 *.log
