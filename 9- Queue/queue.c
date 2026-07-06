@@ -32,6 +32,16 @@ void enqueue(struct Queue *q, int x){
     q->Q[q->Rear] = x;
 }
 
+int first(struct Queue q){
+    if(q.front==q.Rear) return -1;
+    return q.Q[(q.front)+1];
+}
+
+int last(struct Queue q){
+    if(q.front==q.Rear) return -1;
+    return q.Q[q.Rear];
+}
+
 int dequeue(struct Queue *q){
     int x = -1;
     if(q->front==q->Rear){
@@ -53,7 +63,7 @@ int main(){
     enqueue(&q,10);
     enqueue(&q,20);
     enqueue(&q,30);
-    printf("%d was deleted from the queue\n",dequeue(&q));
+    printf("%d\n",last(q));
     Display(q);
     
     free(q.Q);
