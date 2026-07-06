@@ -9,15 +9,22 @@ struct Queue{
 };
 
 void Display(struct Queue q){
-
     for(int i = q.front+1; i<=q.Rear; i++){
         printf("%d\n",q.Q[i]);
     }
 }
 
+int isEmpty(struct Queue q){
+    return q.front == q.Rear;
+}
+
+int isFull(struct Queue q){
+    return q.Rear==q.size-1;
+}
+
 void enqueue(struct Queue *q, int x){
     if(q->Rear==q->size-1){
-        printf("Queue is Full\n");
+        printf("Queue is Full");
         return;
     }
 
@@ -48,7 +55,7 @@ int main(){
     enqueue(&q,30);
     printf("%d was deleted from the queue\n",dequeue(&q));
     Display(q);
-
+    
     free(q.Q);
     return 0;
 }
