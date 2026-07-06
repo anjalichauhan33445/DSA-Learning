@@ -17,7 +17,7 @@ void Display(struct Queue q){
 
 void enqueue(struct Queue *q, int x){
     if(q->Rear==q->size-1){
-        printf("Queue is Full");
+        printf("Queue is Full\n");
         return;
     }
 
@@ -25,6 +25,16 @@ void enqueue(struct Queue *q, int x){
     q->Q[q->Rear] = x;
 }
 
+int dequeue(struct Queue *q){
+    int x = -1;
+    if(q->front==q->Rear){
+        printf("The Queue is Empty\n");
+        return x;
+    }
+    q->front++;
+    x = q->Q[q->front];
+    return x;
+}
 
 int main(){
     struct Queue q;
@@ -36,7 +46,9 @@ int main(){
     enqueue(&q,10);
     enqueue(&q,20);
     enqueue(&q,30);
+    printf("%d was deleted from the queue\n",dequeue(&q));
     Display(q);
 
+    free(q.Q);
     return 0;
 }
