@@ -134,5 +134,6 @@ int main(){
     char *ans  = convert2(exp);
     printf("%s\n",ans);
     free(ans);
+    
     return 0;
 }
