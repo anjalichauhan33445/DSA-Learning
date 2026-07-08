@@ -2,7 +2,6 @@
 #include<stdlib.h>
 
 //DEqueue
-
 struct Queue{
     int size;
     int front;
@@ -41,6 +40,32 @@ int dequeue_rear(struct Queue *q){
 
 }
 
+void enqueue_front(struct Queue *q, int x){
+    if(q->front==-1){
+        printf("Cannot Insert\n");
+        return;
+    }
+    
+    q->Q[q->front] = x;
+    q->front--;
+
+}
+
+int dequeue_front(struct Queue *q){
+
+    int x = -1;
+    if(q->front==q->Rear){
+        printf("The Queue is Empty\n");
+        return x;
+    }
+    q->front++;
+    x = q->Q[q->front];
+    return x;
+    
+
+}
+
+
 int main(){
     struct Queue q;
     q.size = 5;
@@ -51,8 +76,13 @@ int main(){
     enqueue_rear(&q,30);
     enqueue_rear(&q,40);
     enqueue_rear(&q,50);
-    printf("%d was deleted\n",dequeue_rear(&q));
     
+    printf("%d was deleted\n",dequeue_front(&q));
+    
+    
+    Display(q);
+    enqueue_front(&q,10);
+    printf("\n");
     Display(q);
     return 0;
 }
