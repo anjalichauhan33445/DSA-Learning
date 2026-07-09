@@ -44,16 +44,44 @@ void createTree(){
     }
 }
 
-void preorder(struct Node *p){
+void preOrder(struct Node *p){
     if(p){
         printf("%d ",p->data);
-        preorder(p->lchild);
-        preorder(p->rchild);
+        preOrder(p->lchild);
+        preOrder(p->rchild);
     }
 }
 
+void postOrder(struct Node *p){
+    if(p){ 
+        postOrder(p->lchild);
+        postOrder(p->rchild);
+        printf("%d ",p->data);
+    }
+}
+
+void InOrder(struct Node *p){
+    if(p){ 
+        InOrder(p->lchild);
+        printf("%d ",p->data);
+        InOrder(p->rchild);
+        
+    }
+}
+
+
 int main(){
     createTree();
-    preorder(root);
+
+    printf("Pre Order Traversal\n");
+    preOrder(root);
+
+    printf("Post Order Traversal\n");
+    postOrder(root);
+
+    printf("In-Order Traversal\n");
+    InOrder(root);
+    
     return 0;
+
 }
