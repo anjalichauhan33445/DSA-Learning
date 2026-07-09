@@ -27,6 +27,10 @@ stack
 *.ear
 *.tmp
 infix_to_postfix
-
-
+evaluate_postfix_exp
+2-circular_queue
+1-queue
+3-queue_ll
+4-DEqueue
+tree
 
