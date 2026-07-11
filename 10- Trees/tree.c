@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "Queue.h"
-
+#include "Stack.h"
 struct Node * root = NULL;
 
 void createTree(){
@@ -70,17 +70,38 @@ void InOrder(struct Node *p){
 }
 
 
+
+void IpreOrder(struct Node *p){
+    struct Stack stk;
+    createStack(&stk,100);
+    struct Node *t = p;
+    while(t!=NULL || !isEmptyStack(stk)){
+        if(t!=NULL){
+            printf("%d ",t->data);
+            Push(&stk,t);
+            t = t->lchild;
+        }
+        else{
+            t = Pop(&stk);
+            t = t->rchild;
+        }
+    }
+}
+
 int main(){
     createTree();
 
     printf("Pre Order Traversal\n");
     preOrder(root);
 
-    printf("Post Order Traversal\n");
-    postOrder(root);
+    printf("\nIterative version\n");
+    IpreOrder(root);
 
-    printf("In-Order Traversal\n");
-    InOrder(root);
+    // printf("Post Order Traversal\n");
+    // postOrder(root);
+
+    // printf("In-Order Traversal\n");
+    // InOrder(root);
     
     return 0;
 
