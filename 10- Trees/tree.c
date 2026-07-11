@@ -88,20 +88,39 @@ void IpreOrder(struct Node *p){
     }
 }
 
+void IinOrder(struct Node *p){
+    struct Stack stk;
+    struct Node *t = p;
+    createStack(&stk,100);
+
+    while(t!=NULL || !isEmptyStack(stk)){
+        if(t!=NULL){
+            Push(&stk,t); 
+            t = t->lchild;
+        }
+        else{
+            t = Pop(&stk);
+            printf("%d ",t->data);
+            t = t->rchild;
+        }
+    }    
+}
 int main(){
     createTree();
 
-    printf("Pre Order Traversal\n");
-    preOrder(root);
+    // printf("Pre Order Traversal\n");
+    // preOrder(root);
+
+    printf("In-Order Traversal\n");
+    InOrder(root);
 
     printf("\nIterative version\n");
-    IpreOrder(root);
+    IinOrder(root);
 
     // printf("Post Order Traversal\n");
     // postOrder(root);
 
-    // printf("In-Order Traversal\n");
-    // InOrder(root);
+    
     
     return 0;
 
