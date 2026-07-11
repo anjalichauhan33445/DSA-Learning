@@ -105,21 +105,53 @@ void IinOrder(struct Node *p){
         }
     }    
 }
+
+void IpostOrder(struct Node *p){
+        struct Node *t = p;
+        struct Stack1 stk;
+        createStack1(&stk,100);
+
+        while(t!=NULL || !isEmptyStack1(stk)){
+            if(t!=NULL){
+                Push1(&stk,(long int)t);
+                t = t->lchild;
+            }
+            else{
+                long int temp = Pop1(&stk);
+                if(temp>0){
+                    Push1(&stk, -temp);
+                    t = ((struct Node *)temp)->rchild;
+                }
+                else{
+                    temp = -temp;
+                    printf("%d ",((struct Node *)temp)->data);
+                    t = NULL;
+                }
+            }
+        }
+
+}
+
 int main(){
     createTree();
+    
+    printf("Post Order Traversal\n");
+    postOrder(root);
+
+    printf("\nIterative Traversal\n");
+    IpostOrder(root);
+
 
     // printf("Pre Order Traversal\n");
     // preOrder(root);
 
-    printf("In-Order Traversal\n");
-    InOrder(root);
+    // printf("In-Order Traversal\n");
+    // InOrder(root);
 
-    printf("\nIterative version\n");
-    IinOrder(root);
+    // printf("\nIterative version\n");
+    // IinOrder(root);
 
-    // printf("Post Order Traversal\n");
-    // postOrder(root);
-
+    
     
     
     return 0;
