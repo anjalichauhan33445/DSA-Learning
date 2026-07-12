@@ -43,23 +43,23 @@ void Insert(int key){
 }
 
 
-// struct Node *RInsert(struct Node *p, int key){
-//     struct Node *t;
+struct Node *RInsert(struct Node *p, int key){
+    struct Node *t;
 
-//     if(p==NULL){
-//         t = (struct Node *)malloc(sizeof(struct Node));
-//         t->data = key;
-//         t->lchild = t->rchild = NULL;
-//         return t;
-//     }
-//     if(key<p->data){
-//         p->lchild = RInsert(p->lchild,key);
-//     }
-//     else if(key>p->data){
-//         p->rchild = RInsert(p->rchild,key);
-//     }
-//     return p;
-// }
+    if(p==NULL){
+        t = (struct Node *)malloc(sizeof(struct Node));
+        t->data = key;
+        t->lchild = t->rchild = NULL;
+        return t;
+    }
+    if(key<p->data){
+        p->lchild = RInsert(p->lchild,key);
+    }
+    else if(key>p->data){
+        p->rchild = RInsert(p->rchild,key);
+    }
+    return p;
+}
 
 
 void InOrder(struct Node *p){
@@ -73,13 +73,14 @@ void InOrder(struct Node *p){
 
 int main(){
     
-    Insert(30);
-    Insert(20);
-    Insert(40);
-    Insert(10);
-    Insert(25);
-    Insert(35);
-    Insert(50);
+    root = RInsert(root,30);
+    RInsert(root,20);
+    RInsert(root,40);
+    RInsert(root,10);
+    RInsert(root,25);
+    RInsert(root,35);
+    RInsert(root,50);
+    
     InOrder(root);
 
     return 0;
