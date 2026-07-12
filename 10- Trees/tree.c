@@ -153,19 +153,29 @@ void levelOrder(struct Node *p){
 }
 
 int countNodes(struct Node *p){
-    int x,y;
-    if(p!=NULL){
-        x = countNodes(p->lchild);
-        y = countNodes(p->rchild);
-        return x+y+1;
+    if(p==NULL){
+        return 0;
     }
-    return 0;
+    return countNodes(p->lchild)+countNodes(p->rchild)+1;
+}
+
+int countLeafNodes(struct Node *p){
+    if(p==NULL){
+        return 0;
+    }
+    if(!p->lchild && !p->rchild){
+        return countLeafNodes(p->lchild)+countLeafNodes(p->rchild)+1;
+    }
+    
+    return countLeafNodes(p->lchild)+countLeafNodes(p->rchild);
+
 }
 
 int main(){
     createTree();
     
     printf("Number of Nodes are: %d\n",countNodes(root));
+    printf("Number of Leaf Nodes are: %d\n",countLeafNodes(root));
     
     
     
