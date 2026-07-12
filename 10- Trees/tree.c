@@ -171,13 +171,17 @@ int countLeafNodes(struct Node *p){
 
 }
 
+int sumNodes(struct Node *p){
+    if(p==NULL){
+        return 0;
+    }
+    return sumNodes(p->lchild)+sumNodes(p->rchild)+p->data;
+}
+
 int main(){
     createTree();
     
-    printf("Number of Nodes are: %d\n",countNodes(root));
-    printf("Number of Leaf Nodes are: %d\n",countLeafNodes(root));
-    
-    
+    printf("The sum of Nodes is: %d\n",sumNodes(root));
     
     return 0;
 
