@@ -152,25 +152,20 @@ void levelOrder(struct Node *p){
 
 }
 
+int countNodes(struct Node *p){
+    int x,y;
+    if(p!=NULL){
+        x = countNodes(p->lchild);
+        y = countNodes(p->rchild);
+        return x+y+1;
+    }
+    return 0;
+}
+
 int main(){
     createTree();
     
-    printf("Level Order Traversal\n");
-    levelOrder(root);
-
-    // printf("\nIterative Traversal\n");
-    // IpostOrder(root);
-
-
-    // printf("Pre Order Traversal\n");
-    // preOrder(root);
-
-    // printf("In-Order Traversal\n");
-    // InOrder(root);
-
-    // printf("\nIterative version\n");
-    // IinOrder(root);
-
+    printf("Number of Nodes are: %d\n",countNodes(root));
     
     
     
