@@ -178,10 +178,25 @@ int sumNodes(struct Node *p){
     return sumNodes(p->lchild)+sumNodes(p->rchild)+p->data;
 }
 
+int Height(struct Node *root){
+    int x = 0;
+    int y = 0;
+    if(root == NULL){
+        return 0;
+    }
+    x = Height(root->lchild);
+    y = Height(root->rchild);
+    if(x>y){
+        return x+1;
+    }
+    else{
+        return y+1;
+    }
+}
 int main(){
     createTree();
     
-    printf("The sum of Nodes is: %d\n",sumNodes(root));
+    printf("The Height of Tree is: %d\n",Height(root));
     
     return 0;
 
