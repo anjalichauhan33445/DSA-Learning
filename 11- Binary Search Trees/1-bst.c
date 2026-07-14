@@ -88,6 +88,65 @@ struct Node *Search(int key){
     return NULL;
 }
 
+int Height(struct Node *root){
+    int x = 0;
+    int y = 0;
+    if(root==NULL){
+        return 0;
+    }
+
+    x = Height(root->lchild);
+    y = Height(root->rchild);
+
+    return x>y?x+1:y+1;
+}
+
+struct Node *InPre(struct Node *p){
+    while(p && p->rchild!=NULL){
+        p = p->rchild;
+    }
+    return p;
+}
+
+struct Node *InSucc(struct Node *p){
+    while(p && p->lchild!=NULL){
+        p = p->lchild;
+    }
+    return p;
+}
+struct Node *Delete(struct Node *p, int key){
+    struct Node *q;
+
+    if(p==NULL) return NULL;
+    
+    if(key<p->data){
+        p->lchild = Delete(p->lchild,key);
+    }
+    else if(key>p->data){
+        p->rchild = Delete(p->rchild,key);
+    }
+    else{
+        if(p->lchild==NULL && p->rchild==NULL){
+        if(p==root){
+            root = NULL;
+        }
+        free(p);
+        return NULL;
+    }
+        if(Height(p->lchild)>Height(p->rchild)){
+            q = InPre(p->lchild);
+            p->data = q->data;
+            p->lchild = Delete(p->lchild,q->data);
+        }
+        else{
+            q = InSucc(p->rchild);
+            p->data = q->data;
+            p->rchild = Delete(p->rchild,q->data);
+        }
+    }
+    return p;
+}
+
 int main(){
     struct Node *temp;
     root = RInsert(root,30);
@@ -99,14 +158,8 @@ int main(){
     RInsert(root,50);
     
     InOrder(root);
-
-    temp = Search(25);
-    if(temp){
-        printf("\nElement %d is found\n",temp->data);
-    }
-    else{
-        printf("\nElement is not found!\n");
-    }
+    root = Delete(root,40);
+    printf("\nElement 40 was deleted\n");
 
     return 0;
 }
