@@ -11,8 +11,8 @@ This repository contains my implementations of Data Structures and Algorithms co
 - [x] Matrices
 - [x] Linked Lists
 - [x] Stacks
-- [ ] Queues
-- [ ] Trees
+- [x] Queues
+- [x] Trees
 - [ ] Graphs
 - [ ] Hashing
 
