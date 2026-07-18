@@ -37,9 +37,6 @@ void Insert(int key){
 
     if(r->data<t->data) r->rchild = t;
     else r->lchild = t;
-
-
-
 }
 
 
@@ -148,7 +145,7 @@ struct Node *Delete(struct Node *p, int key){
 }
 
 int main(){
-    struct Node *temp;
+    
     root = RInsert(root,30);
     RInsert(root,20);
     RInsert(root,40);
