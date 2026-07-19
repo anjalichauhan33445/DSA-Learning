@@ -60,7 +60,19 @@ struct Node* LRRotation(struct Node *p){
 }
 
 struct Node* RRRotation(struct Node *p){
-    return NULL;
+    struct Node *pr = p->rchild;
+    struct Node *prl = pr->lchild;
+
+    pr->lchild = p;
+    p->rchild = prl;
+
+    p->height = NodeHeight(p);
+    pr->height = NodeHeight(pr);
+
+    if(root == p){
+        root = pr;
+    }
+    return pr;
 }
 
 struct Node* RLRotation(struct Node *p){
@@ -113,14 +125,10 @@ void InOrder(struct Node *p){
 int main(){    
     root = RInsert(root,40);
     root = RInsert(root,20);
-    root = RInsert(root,50);
-    root = RInsert(root,10);
-    root = RInsert(root,30);
     root = RInsert(root,60);
-    root = RInsert(root,5);
-    root = RInsert(root,25);
-    root = RInsert(root,35);
-    root = RInsert(root,27);
+    root = RInsert(root,50);
+    root = RInsert(root,70);
+    root = RInsert(root,80);
 
     InOrder(root);
     
