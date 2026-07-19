@@ -76,7 +76,21 @@ struct Node* RRRotation(struct Node *p){
 }
 
 struct Node* RLRotation(struct Node *p){
-    return NULL;
+    struct Node *pr = p->rchild;
+    struct Node *prl = pr->lchild;
+
+    p->rchild = prl->lchild;
+    pr->lchild = prl->rchild;
+    prl->lchild = p;
+    prl->rchild = pr;
+
+    p->height = NodeHeight(p);
+    pr->height = NodeHeight(pr);
+    prl->height = NodeHeight(prl);
+    if(root==p){
+        root = prl;
+    }
+    return prl;    
 }
 
 struct Node *RInsert(struct Node *p, int key){
@@ -128,7 +142,7 @@ int main(){
     root = RInsert(root,60);
     root = RInsert(root,50);
     root = RInsert(root,70);
-    root = RInsert(root,80);
+    root = RInsert(root,45);
 
     InOrder(root);
     
