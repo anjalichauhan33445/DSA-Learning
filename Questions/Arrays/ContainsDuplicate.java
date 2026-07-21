@@ -20,4 +20,5 @@ class ContainsDuplicate {
             System.out.println("The array doesn't contain duplicate");
         }
     }
+    
 }
