@@ -14,7 +14,7 @@ This repository contains my implementations of Data Structures and Algorithms co
 - [x] Queues
 - [x] Trees
 - [x] Binary Heap
-- [] Sorting
+- [x] Sorting
 - [ ] Graphs
 - [ ] Hashing
 
