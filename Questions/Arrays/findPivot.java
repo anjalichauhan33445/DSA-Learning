@@ -1,6 +1,6 @@
 // leetcode 724
 
-class findPivot {
+class FindPivot {
     static int pivotIndex(int[] nums) {
         int n = nums.length;
         int[] prefix = new int[nums.length];
