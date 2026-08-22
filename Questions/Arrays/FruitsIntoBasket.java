@@ -10,12 +10,14 @@ class FruitsIntoBasket {
 
         while(r<fruits.length){
             map.put(fruits[r],map.getOrDefault(fruits[r],0)+1);
-            while(map.size()>2){
+            if(map.size()>2){
                 map.put(fruits[l],map.getOrDefault(fruits[l],0)-1);
                 if(map.getOrDefault(fruits[l],0)==0) map.remove(fruits[l]);
                 l++;
             }
+            if(map.size()<=2){
             maxLen = Math.max(maxLen,r-l+1);
+            }
             r++;
 
         }
