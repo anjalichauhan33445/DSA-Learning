@@ -2,7 +2,7 @@
 // Return the number of substrings containing at least one occurrence of all these characters a, b and c.
 
 
-class numberOfSubstrings {
+class NumberOfSubstrings {
         static int numberOfSubstrings(String s) {
         int[] freq = new int[3];
         int n = s.length();
