@@ -1,6 +1,6 @@
 // Java program to create Special triangle.
 import java.util.*;
-import java.lang.*;
+
 
 public class ConstructTraingle{ 
     public static void printTriangle(int[] A){
