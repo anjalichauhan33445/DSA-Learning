@@ -4,7 +4,7 @@ class ReverseArray {
         static void iterative(int[] arr){
             int i = 0;
             int j = arr.length-1;
-            while(i<j){
+            while(i<=j){
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
@@ -13,16 +13,17 @@ class ReverseArray {
             }
         }
 
-        static void recursion(int[] arr, int i, int j){
-            if(i>j) return;
+        static void recursion(int[] arr, int i){
+            int n = arr.length;
+            if(i>=n/2) return;
             int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-            recursion(arr, i+1, j-1);
+            arr[i] = arr[n-i-1];
+            arr[n-i-1] = temp;
+            recursion(arr,i+1);
         }
         public static void main(String[] args) {
             int[] arr = {10,20,30,40,50};
-            iterative(arr);
+            recursion(arr,0);
             System.out.println(Arrays.toString(arr));
         }
 }
