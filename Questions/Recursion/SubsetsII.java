@@ -13,7 +13,7 @@ public class SubsetsII {
     static void subsets(int ind, int[] nums, List<Integer> curr, List<List<Integer>> ans){
         ans.add(new ArrayList<>(curr));
         for(int i = ind; i<nums.length;i++){
-            if(i>ind && nums[i]==nums[i-1]) continue;
+            if(i!=ind && nums[i]==nums[i-1]) continue;
             curr.add(nums[i]);
             subsets(i+1,nums,curr,ans);
             curr.remove(curr.size()-1);
