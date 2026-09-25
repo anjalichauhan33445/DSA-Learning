@@ -43,5 +43,4 @@ public class SpiralMatrix {
         ArrayList<Integer> ans = spiralOrder(matrix);
         System.out.println("Traversed Matrix: ");
         System.out.println(ans);
-    }
-}
+    } }
