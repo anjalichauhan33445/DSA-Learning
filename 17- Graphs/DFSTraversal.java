@@ -1,10 +1,8 @@
 import java.util.*;
 
 public class DFSTraversal {
-
     static void traverse(int node, ArrayList<ArrayList<Integer>> adj,
                          ArrayList<Integer> ans, boolean[] visited) {
-
         visited[node] = true;
         ans.add(node);
 
