@@ -29,6 +29,28 @@ public class CountSubsets {
     public static void main(String[] args) {
         int[] arr = {5, 2, 3, 10, 6, 8};
         int target = 10;
-        System.out.println(perfectSum(arr, target));
+        // System.out.println(perfectSum(arr, target));
+
+        // tabulation:
+        int[][] dp = new int[arr.length][target+1];
+       
+        
+        
+        if(arr[0]==0) dp[0][0] = 2;
+        else dp[0][0] = 1;
+        
+        if(arr[0]!=0 && arr[0]<=target) dp[0][arr[0]] = 1;
+        
+        
+        for(int i = 1; i<arr.length; i++){
+            for(int k = 0; k<=target; k++){
+                int npick = dp[i-1][k];
+                int pick = 0;
+                if(k>=arr[i]) pick += dp[i-1][k-arr[i]];
+                dp[i][k] = npick + pick;
+        
+            }
+        }
+        System.out.println(dp[arr.length-1][target]); 
     }
 }
